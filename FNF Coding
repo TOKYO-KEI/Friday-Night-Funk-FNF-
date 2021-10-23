@@ -1,0 +1,16 @@
+<assets path="assets/week7"    library="week6"    exclude="*.ogg" if="web"/>
+<assets path="assets/week7"    library="week6"    exclude="*.mp3" unless="web"/><assets path="assets/videos" exclude="*.mp3" if="web"/>
+<assets path="assets/videos" exclude="*.ogg" unless="web"/>
+inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String)
+{
+	return sound(key + FlxG.random.int(min, max), library);
+}
+inline static public function video(key:String, ?library:String)
+{
+	trace('assets/videos/$key.mp4');
+	return getPath('videos/$key.mp4', BINARY, library);
+}
+var video:VideoHandler = new VideoHandler();
+video.playWebMP4(Paths.video('nameofyourvideohere'), new MainMenuState());
+var video:VideoHandler = new VideoHandler();
+video.playMP4(Paths.video('nameofyourvideohere'), new MainMenuState(), false, false, false);
